@@ -27,3 +27,5 @@ a substitute for a deployment-specific security review.
 ## Tutorials
 
 - [A Narrow Safe-Shutdown Boundary for a Raspberry Pi Appliance](tutorials/raspberry-pi-safe-shutdown.md)
+- [Durable GitHub Issue-to-Roadmap Synchronization](tutorials/github-issue-roadmap-sync.md)
+- [Build a Dedicated Raspberry Pi Touchscreen Web Appliance](tutorials/raspberry-pi-web-appliance.md)
