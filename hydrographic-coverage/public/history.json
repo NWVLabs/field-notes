@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "observations": [
+    {
+      "observed_at": "2026-09-03T15:02:15.193855+00:00",
+      "noaa_published_cells": 6907,
+      "noaa_usage_bands": {
+        "Overview": 15,
+        "General": 64,
+        "Coastal": 264,
+        "Approach": 2177,
+        "Harbor": 4323,
+        "Berthing": 64
+      }
+    },
+    {
+      "observed_at": "2026-09-03T17:24:26.044028+00:00",
+      "noaa_published_cells": 6908,
+      "noaa_usage_bands": {
+        "Overview": 15,
+        "General": 64,
+        "Coastal": 264,
+        "Approach": 2177,
+        "Harbor": 4324,
+        "Berthing": 64
+      }
+    }
+  ]
+}
