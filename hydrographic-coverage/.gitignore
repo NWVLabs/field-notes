@@ -1,0 +1,5 @@
+# Reproducible working data fetched from public authoritative sources.
+/data/
+
+# Large intermediate vector rendering. The workflow publishes the PNG.
+/public/assets/hydrographic-coverage.svg
