@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-04T00:56:32.722270+00:00",
+  "sources": {
+    "noaa_enc": {
+      "authority": "NOAA Office of Coast Survey",
+      "data_class": "navigation-grade authoritative ENC",
+      "published_cells": 6908,
+      "usage_bands": {
+        "Overview": 15,
+        "General": 64,
+        "Coastal": 264,
+        "Approach": 2177,
+        "Harbor": 4324,
+        "Berthing": 64
+      },
+      "source": "https://gis.charttools.noaa.gov/arcgis/rest/services/MarineChart_Services/Status_New_NOAA_ENCs/MapServer"
+    },
+    "usace_ienc": {
+      "authority": "U.S. Army Corps of Engineers",
+      "data_class": "navigation-grade authoritative Inland ENC",
+      "coverage_features": 317,
+      "source": "https://ienccloud.us/arcgis/rest/services/IENC/USACE_IENC_Master_Service/MapServer/63"
+    },
+    "usace_ehydro": {
+      "authority": "U.S. Army Corps of Engineers",
+      "data_class": "authoritative supplemental hydrography; not ENC coverage",
+      "survey_footprints": 122257,
+      "source": "https://services7.arcgis.com/n1YM8pTrFmm7L4hs/arcgis/rest/services/eHydro_Survey_Data/FeatureServer/0"
+    },
+    "usgs_inland_bathymetry": {
+      "authority": "U.S. Geological Survey / 3DEP",
+      "data_class": "authoritative supplemental bathymetry inventory; not ENC coverage",
+      "survey_footprints": 314,
+      "source": "https://partnerships.nationalmap.gov/arcgis/rest/services/USGS_Inland_Bathymetry/MapServer/0"
+    }
+  },
+  "disclaimer": "Coverage research artifact. Supplemental survey footprints are not ENC coverage and this feed is not a navigation chart."
+}
