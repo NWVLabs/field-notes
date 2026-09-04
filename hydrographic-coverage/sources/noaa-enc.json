@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "provider": "NOAA Office of Coast Survey",
+  "authority": "United States",
+  "coverageRole": "public hydrographic coverage tracker",
+  "rightsClass": "FREE-PRODUCTION candidate",
+  "inventory": {
+    "type": "NOAA ENC Product Catalog XML",
+    "url": "https://charts.noaa.gov/ENCs/ENCProdCat_19115.xml",
+    "purpose": "authoritative current downloadable ENC inventory"
+  },
+  "geometrySources": [
+    {
+      "type": "ArcGIS REST MapServer",
+      "url": "https://gis.charttools.noaa.gov/arcgis/rest/services/MarineChart_Services/Status_New_NOAA_ENCs/MapServer",
+      "spatialReference": "EPSG:4326",
+      "queryFormats": ["JSON", "GeoJSON"],
+      "usage": "cell-footprint and rescheme-status verification",
+      "productionFilter": "status == Published",
+      "layers": {
+        "0": "Berthing - Band 6",
+        "1": "Harbor - Band 5",
+        "2": "Approach - Band 4",
+        "3": "Coastal - Band 3",
+        "4": "General - Band 2",
+        "5": "Overview - Band 1"
+      }
+    },
+    {
+      "type": "ArcGIS REST service folder",
+      "url": "https://gis.charttools.noaa.gov/arcgis/rest/services/encdirect",
+      "spatialReference": "EPSG:4326",
+      "usage": "ENC Direct to GIS visualization and geometry validation",
+      "services": [
+        "enc_coverage",
+        "enc_overview",
+        "enc_general",
+        "enc_coastal",
+        "enc_approach",
+        "enc_harbour",
+        "enc_berthing"
+      ]
+    }
+  ],
+  "notes": [
+    "Do not infer coverage from political boundaries.",
+    "Support multiple overlapping NOAA ENC cells at a point.",
+    "Handle antimeridian-crossing geometry explicitly.",
+    "Product Catalog remains the inventory authority; GIS services are mapping/verification surfaces.",
+    "Do not include planned, in-work, or validation cells in production coverage."
+  ]
+}
