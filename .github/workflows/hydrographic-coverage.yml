@@ -1,0 +1,86 @@
+name: FINN Hydrographic Coverage
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '23 10 * * 1'
+  push:
+    paths:
+      - 'hydrographic-coverage/tools/build_coverage.py'
+      - 'hydrographic-coverage/tools/build_public_feed.py'
+      - 'hydrographic-coverage/README.md'
+      - '.github/workflows/hydrographic-coverage.yml'
+
+concurrency:
+  group: finn-field-notes-hydrographic-coverage
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Collect NOAA + USACE + USGS coverage
+        run: python hydrographic-coverage/tools/build_coverage.py
+
+      - name: Build public coverage feed
+        run: python hydrographic-coverage/tools/build_public_feed.py
+
+      - name: Install SVG renderer
+        run: python -m pip install --disable-pip-version-check cairosvg
+
+      - name: Render public PNG
+        run: |
+          python -m cairosvg hydrographic-coverage/public/assets/hydrographic-coverage.svg \
+            -o hydrographic-coverage/public/assets/hydrographic-coverage.png \
+            -s 4
+
+      - name: Validate public feed
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path('hydrographic-coverage/public')
+          summary = json.loads((root / 'coverage-summary.json').read_text())
+          latest = json.loads((root / 'latest-changes.json').read_text())
+          history = json.loads((root / 'history.json').read_text())
+
+          assert summary['schema_version'] == 1
+          assert latest['schema_version'] == 1
+          assert history['schema_version'] == 1
+          assert summary['sources']['noaa_enc']['published_cells'] > 0
+          assert summary['sources']['usace_ienc']['coverage_features'] > 0
+          assert summary['sources']['usace_ehydro']['survey_footprints'] > 0
+          assert summary['sources']['usgs_inland_bathymetry']['survey_footprints'] > 0
+          assert history['observations']
+          print(json.dumps(summary, indent=2))
+          print(json.dumps(latest, indent=2))
+          PY
+
+      - name: Commit refreshed public artifacts
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add \
+            hydrographic-coverage/public/coverage-summary.json \
+            hydrographic-coverage/public/latest-changes.json \
+            hydrographic-coverage/public/history.json \
+            hydrographic-coverage/public/assets/hydrographic-coverage.png
+          if git diff --cached --quiet; then
+            echo 'Hydrographic coverage is already current.'
+          else
+            git commit -m 'Refresh public hydrographic coverage'
+            git pull --rebase origin main
+            git push
+          fi
