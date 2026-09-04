@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "observed_at": "2026-09-03T17:24:26.044028+00:00",
+  "previous_observed_at": "2026-09-03T15:02:15.193855+00:00",
+  "changes": [
+    {
+      "source": "noaa_enc",
+      "metric": "published_cells",
+      "before": 6907,
+      "after": 6908,
+      "delta": 1
+    },
+    {
+      "source": "noaa_enc",
+      "metric": "usage_band",
+      "band": "Harbor",
+      "before": 4323,
+      "after": 4324,
+      "delta": 1
+    }
+  ],
+  "semantics": "latest meaningful NOAA published-inventory change observed by FINN; unchanged refreshes do not create history entries"
+}
