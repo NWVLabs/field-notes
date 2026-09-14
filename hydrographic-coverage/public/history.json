@@ -36,6 +36,18 @@
         "Harbor": 4324,
         "Berthing": 64
       }
+    },
+    {
+      "observed_at": "2026-09-14T16:24:44.213512+00:00",
+      "noaa_published_cells": 6929,
+      "noaa_usage_bands": {
+        "Overview": 15,
+        "General": 78,
+        "Coastal": 271,
+        "Approach": 2177,
+        "Harbor": 4324,
+        "Berthing": 64
+      }
     }
   ]
 }
