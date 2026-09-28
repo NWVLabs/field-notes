@@ -1,38 +1,22 @@
 {
   "schema_version": 1,
-  "observed_at": "2026-09-21T16:30:31.928619+00:00",
-  "previous_observed_at": "2026-09-14T16:24:44.213512+00:00",
+  "observed_at": "2026-09-28T18:12:17.239378+00:00",
+  "previous_observed_at": "2026-09-21T16:30:31.928619+00:00",
   "changes": [
     {
       "source": "noaa_enc",
       "metric": "published_cells",
-      "before": 6929,
-      "after": 6954,
-      "delta": 25
-    },
-    {
-      "source": "noaa_enc",
-      "metric": "usage_band",
-      "band": "Coastal",
-      "before": 271,
-      "after": 283,
-      "delta": 12
-    },
-    {
-      "source": "noaa_enc",
-      "metric": "usage_band",
-      "band": "Approach",
-      "before": 2177,
-      "after": 2183,
-      "delta": 6
+      "before": 6954,
+      "after": 6967,
+      "delta": 13
     },
     {
       "source": "noaa_enc",
       "metric": "usage_band",
       "band": "Harbor",
-      "before": 4324,
-      "after": 4331,
-      "delta": 7
+      "before": 4331,
+      "after": 4344,
+      "delta": 13
     }
   ],
   "semantics": "latest meaningful NOAA published-inventory change observed by FINN; unchanged refreshes do not create history entries"
