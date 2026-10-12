@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-05T19:30:30.758625+00:00",
+  "generated_at": "2026-10-12T19:52:37.267097+00:00",
   "sources": {
     "noaa_enc": {
       "authority": "NOAA Office of Coast Survey",
@@ -25,7 +25,7 @@
     "usace_ehydro": {
       "authority": "U.S. Army Corps of Engineers",
       "data_class": "authoritative supplemental hydrography; not ENC coverage",
-      "survey_footprints": 123158,
+      "survey_footprints": 123334,
       "source": "https://services7.arcgis.com/n1YM8pTrFmm7L4hs/arcgis/rest/services/eHydro_Survey_Data/FeatureServer/0"
     },
     "usgs_inland_bathymetry": {
